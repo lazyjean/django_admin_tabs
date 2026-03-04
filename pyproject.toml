@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-admin-tabs"
+version = "1.0.0"
+description = "Django admin extension with history bar tabs"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+requires-python = ">=3.8"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["django", "admin", "tabs", "history"]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/django_admin_tabs"
+Repository = "https://github.com/yourusername/django_admin_tabs"
+Issues = "https://github.com/yourusername/django_admin_tabs/issues"
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+    "django",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["django_admin_tabs*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["django_admin_tabs"]

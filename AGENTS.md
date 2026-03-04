@@ -23,14 +23,11 @@ python manage.py test django_admin_tabs.tests.TestClassName.test_method_name
 ### Code Quality
 
 ```bash
-# Linting (flake8)
-flake8 django_admin_tabs/
+# Linting and formatting (ruff)
+ruff check django_admin_tabs/
 
-# Format code (black)
-black django_admin_tabs/
-
-# Check imports (isort)
-isort django_admin_tabs/ --check-only --diff
+# Format code (ruff)
+ruff format django_admin_tabs/
 ```
 
 ### Development
@@ -51,9 +48,7 @@ python manage.py migrate
 ### Python Style
 
 - **Follow PEP 8** with 100 character line limit
-- Use **Black** for formatting (line length 100)
-- Use **isort** for import sorting
-- Use **flake8** for linting
+- Use **Ruff** for formatting and linting (line length 100)
 
 ### Imports
 
