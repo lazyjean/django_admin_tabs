@@ -1,7 +1,0 @@
-from django.apps import AppConfig
-
-
-class DjangoAdminTabsConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
-    name = "django_admin_tabs"
-    verbose_name = "Django Admin Tabs"

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-03-04
+
+### Changed
+- **Zero Configuration**: No longer requires manual template setup, works with INSTALLED_APPS order only
+- **Template Auto-discovery**: Uses Django's template loading order to automatically override admin templates
+- **AppConfig Order Check**: Added automatic validation for INSTALLED_APPS ordering
+- **System Styling**: Now uses Django Admin CSS variables for automatic theme compatibility
+- **Documentation**: Updated to focus on "Tabs Navigation" as primary feature rather than "History Tracking"
+- **File Naming**: Renamed `history.css/js` to `tabs.css/js` for clarity
+
+### Fixed
+- Compatibility with django-admin-interface and other admin themes
+- Hard-coded colors replaced with CSS variables
+
 ## [0.0.1] - 2024-03-04
 
 ### Added

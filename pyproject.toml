@@ -3,9 +3,9 @@ requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "django-admin-tabs"
-version = "0.0.1"
-description = "Django admin extension with history bar tabs"
+name = "django-nav-toolbar"
+version = "0.1.0"
+description = "Smart navigation tabs for Django Admin"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
@@ -27,12 +27,12 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-keywords = ["django", "admin", "tabs", "history"]
+keywords = ["django", "admin", "tabs", "navigation"]
 
 [project.urls]
-Homepage = "https://github.com/lazyjean/django_admin_tabs"
-Repository = "https://github.com/lazyjean/django_admin_tabs"
-Issues = "https://github.com/lazyjean/django_admin_tabs/issues"
+Homepage = "https://github.com/lazyjean/django-nav-toolbar"
+Repository = "https://github.com/lazyjean/django-nav-toolbar"
+Issues = "https://github.com/lazyjean/django-nav-toolbar/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -43,7 +43,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["django_admin_tabs*"]
+include = ["nav_toolbar*"]
 
 [tool.ruff]
 line-length = 100
@@ -54,4 +54,4 @@ select = ["E", "F", "I", "N", "W", "UP"]
 ignore = ["E501"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["django_admin_tabs"]
+known-first-party = ["nav_toolbar"]

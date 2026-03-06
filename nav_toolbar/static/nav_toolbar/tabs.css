@@ -1,0 +1,70 @@
+#admin-tabs-bar {
+    background: var(--body-bg, #f0f0f0);
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--border-color, #ccc);
+    font-size: 12px;
+    gap: 6px;
+}
+
+#admin-tabs-scroll {
+    display: flex;
+    overflow-x: auto;
+    flex: 1;
+    gap: 6px;
+    padding: 2px 0;
+}
+
+#admin-tabs-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+#admin-tabs-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color, #999);
+    border-radius: 2px;
+}
+
+.admin-tab-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--body-bg, #fff);
+    color: var(--body-fg, #333);
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.admin-tab-item:hover {
+    background: var(--primary-bg, #e5e5e5);
+    border-color: var(--primary, #417690);
+}
+
+.admin-tab-item.active {
+    background: var(--primary, #417690);
+    color: var(--header-link-color, #fff);
+    border-color: var(--primary, #417690);
+}
+
+.admin-tab-item .admin-tab-close {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-left: 4px;
+    line-height: 1;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-tab-item .admin-tab-close:hover {
+    opacity: 1;
+}
+
+.admin-tab-item.active .admin-tab-close:hover {
+    color: var(--header-link-color-hover, #f0f0f0);
+}
