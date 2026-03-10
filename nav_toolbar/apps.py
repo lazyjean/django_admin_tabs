@@ -10,6 +10,7 @@ class NavToolbarConfig(AppConfig):
 
     def ready(self):
         self._check_installed_apps_order()
+        self._inject_middleware()
 
     def _check_installed_apps_order(self):
         """Check that nav_toolbar comes before django.contrib.admin"""
@@ -35,3 +36,12 @@ class NavToolbarConfig(AppConfig):
                 )
         except ValueError:
             pass
+
+    def _inject_middleware(self):
+        """Automatically inject middleware for zero-configuration"""
+        from django.conf import settings
+
+        middleware_path = "nav_toolbar.middleware.NavToolbarMiddleware"
+
+        if middleware_path not in settings.MIDDLEWARE:
+            settings.MIDDLEWARE = list(settings.MIDDLEWARE) + [middleware_path]

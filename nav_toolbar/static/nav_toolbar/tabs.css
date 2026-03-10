@@ -1,9 +1,8 @@
 #admin-tabs-bar {
-    background: var(--body-bg, #f0f0f0);
+    background: var(--admin-interface-header-background-color, var(--header-bg, var(--primary, #417690)));
     display: flex;
     align-items: center;
     padding: 8px 20px;
-    border-bottom: 1px solid var(--border-color, #ccc);
     font-size: 12px;
     gap: 6px;
 }
@@ -21,7 +20,7 @@
 }
 
 #admin-tabs-scroll::-webkit-scrollbar-thumb {
-    background: var(--border-color, #999);
+    background: var(--admin-interface-module-link-color, var(--border-color, #999));
     border-radius: 2px;
 }
 
@@ -30,26 +29,29 @@
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    background: var(--body-bg, #fff);
-    color: var(--body-fg, #333);
-    border: 1px solid var(--border-color, #ccc);
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--admin-interface-header-background-color, var(--primary, #417690));
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
     text-decoration: none;
     font-size: 12px;
+    font-weight: 500;
     transition: all 0.2s ease;
 }
 
 .admin-tab-item:hover {
-    background: var(--primary-bg, #e5e5e5);
-    border-color: var(--primary, #417690);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .admin-tab-item.active {
-    background: var(--primary, #417690);
-    color: var(--header-link-color, #fff);
-    border-color: var(--primary, #417690);
+    background: #fff;
+    color: var(--admin-interface-header-background-color, var(--primary, #417690));
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--admin-interface-header-background-color, var(--primary, #417690)), 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
 }
 
 .admin-tab-item .admin-tab-close {
@@ -66,5 +68,5 @@
 }
 
 .admin-tab-item.active .admin-tab-close:hover {
-    color: var(--header-link-color-hover, #f0f0f0);
+    color: var(--admin-interface-header-text-color, var(--header-link-color-hover, #f0f0f0));
 }

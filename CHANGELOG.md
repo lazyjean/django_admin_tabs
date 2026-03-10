@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-10
+
+### Changed
+- **Middleware Injection**: Replaced template overriding with middleware-based HTML injection for better compatibility
+- **Zero Configuration**: Fully automatic setup - no INSTALLED_APPS ordering requirements
+- **django-admin-interface Support**: Full compatibility with admin themes via middleware approach
+- **Visual Design**: Improved tab styling with better contrast between active/inactive states
+- **No Layout Jump**: Pre-inserted container eliminates visual flicker during page navigation
+
+### Fixed
+- Conflicts with django-admin-interface template overrides
+- Visual jump when navigating between pages
+- Tab visibility and contrast issues in various themes
+
 ## [0.1.0] - 2026-03-04
 
 ### Changed

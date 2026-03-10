@@ -119,19 +119,25 @@
             return;
         }
 
-        const bar = document.createElement('div');
-        bar.id = 'admin-tabs-bar';
-        bar.innerHTML = `<div id="admin-tabs-scroll"></div>`;
-
-        const breadcrumbs = document.querySelector('#breadcrumbs');
-        if (breadcrumbs) {
-            breadcrumbs.parentNode.insertBefore(bar, breadcrumbs.nextSibling);
-        } else {
-            const header = document.querySelector('#header');
-            if (header) {
-                header.parentNode.insertBefore(bar, header.nextSibling);
+        // Use pre-inserted container to avoid layout jump
+        const bar = document.getElementById('admin-tabs-bar');
+        if (!bar) {
+            // Fallback: create container if not found
+            const newBar = document.createElement('div');
+            newBar.id = 'admin-tabs-bar';
+            newBar.className = 'admin-interface';
+            newBar.innerHTML = `<div id="admin-tabs-scroll"></div>`;
+            
+            const breadcrumbs = document.querySelector('#breadcrumbs');
+            if (breadcrumbs) {
+                breadcrumbs.parentNode.insertBefore(newBar, breadcrumbs.nextSibling);
             } else {
-                document.body.appendChild(bar);
+                const header = document.querySelector('#header');
+                if (header) {
+                    header.parentNode.insertBefore(newBar, header.nextSibling);
+                } else {
+                    document.body.appendChild(newBar);
+                }
             }
         }
 

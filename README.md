@@ -2,18 +2,18 @@
 
 A Django admin extension that adds smart navigation tabs to help you quickly switch between recently visited admin pages.
 
-**Zero Configuration Required** - Just add to `INSTALLED_APPS` and it works!
+**Zero Configuration Required** - Just install and it works!
 
 ## Features
 
-- **Zero Configuration** - Works out of the box with just INSTALLED_APPS setup
+- **Zero Configuration** - Works out of the box with automatic setup
 - **Smart Tab Navigation** - Automatically maintains a tab bar of your recent admin pages
 - **Quick Page Switching** - Click any tab to instantly jump to that page
 - **Close Tabs** - Remove individual tabs with a click
 - **Persistent Tabs** - Your tabs survive page refreshes (stored in browser)
 - **Theme Compatible** - Automatically adapts to Django Admin's color scheme
 - **Custom Theme Support** - Works with django-admin-interface, django-jazzmin, etc.
-- **Configurable** - Optional settings for customization
+- **No Layout Jump** - Seamless page transitions without visual flicker
 
 ## Requirements
 
@@ -36,15 +36,15 @@ pip install git+https://github.com/lazyjean/django-nav-toolbar.git
 
 ### 1. Add to INSTALLED_APPS
 
-**Important**: Place `nav_toolbar` **before** `django.contrib.admin` in `INSTALLED_APPS`:
-
 ```python
 INSTALLED_APPS = [
-    'nav_toolbar',       # Must come BEFORE django.contrib.admin
+    'nav_toolbar',
     'django.contrib.admin',
     # ... your other apps
 ]
 ```
+
+**Note**: No special ordering required - `nav_toolbar` can be placed anywhere in `INSTALLED_APPS`.
 
 ### 2. Collect Static Files
 
@@ -72,54 +72,48 @@ The tabs are automatically managed based on your navigation patterns.
 
 ## Configuration (Optional)
 
-All settings are optional. The package works with zero configuration.
+Currently, the package uses fixed default values. Advanced configuration support is planned for future releases.
 
-### Available Settings
-
-Add to your `settings.py`:
-
-```python
-DJANGO_ADMIN_TABS = {
-    'MAX_ITEMS': 20,              # Maximum number of tabs to maintain
-    'STORAGE_KEY': 'admin_tabs',  # Browser storage key prefix
-}
-```
-
-### Configuration Options
+### Current Defaults
 
 | Option | Default | Description |
 |--------|---------|-------------|
 | `MAX_ITEMS` | 20 | Maximum number of tabs to display |
-| `STORAGE_KEY` | `'admin_tabs'` | Prefix for browser storage |
+| `STORAGE_KEY` | `'admin_tabs_'` | Browser storage key prefix (includes hostname) |
 
 ## Technical Details
 
-### Template Override Mechanism
+### Automatic Middleware Injection
 
-This package uses Django's template loading order to automatically extend admin templates:
+This package uses Django middleware to automatically inject CSS/JS into admin pages:
 
-1. Django's `app_directories` template loader searches apps in `INSTALLED_APPS` order
-2. By placing `nav_toolbar` before `django.contrib.admin`, its template is found first
-3. The package's template extends `admin/base.html` and injects CSS/JS automatically
+1. **CSS Injection**: The middleware adds the tabs stylesheet to the `<head>` section
+2. **Container Pre-insertion**: An empty container is inserted after the admin header to prevent layout jumps
+3. **JavaScript Injection**: The tabs script is added before the closing `</body>` tag
+4. **Dynamic Content**: JavaScript fills the pre-inserted container with tab data
 
-This approach ensures compatibility with:
-- Standard Django Admin
-- django-admin-interface
-- django-jazzmin
-- django-admin-numeric-filter
-- Any other admin theme that extends `admin/base.html`
+This approach ensures:
+- **Zero configuration** - No template modifications or INSTALLED_APPS ordering required
+- **Universal compatibility** - Works with any admin theme or customization
+- **No visual jumps** - Container exists before page render completes
+- **Automatic middleware registration** - Added automatically by the app config
 
-### Styling
+### Theme Compatibility
 
-The package uses Django Admin's CSS variables to automatically match your admin theme:
+The package uses CSS variables to automatically match your admin theme:
 
-- `--primary` - Primary color for active tabs
+**Django Admin Interface Variables:**
+- `--admin-interface-header-background-color` - Header/tabs bar background
+- `--admin-interface-header-text-color` - Active tab text
+- `--admin-interface-module-background-color` - Module colors
+- `--admin-interface-module-link-color` - Link colors
+
+**Fallback to Django Admin Variables:**
+- `--primary` - Primary color
+- `--header-bg` - Header background
 - `--body-bg` - Background color
-- `--body-fg` - Text color
-- `--border-color` - Border color
-- `--header-link-color` - Active tab text color
 
-If you have a custom admin theme with these CSS variables defined, the tabs will automatically match your theme.
+If you have a custom admin theme, the tabs will automatically adapt to match your design.
 
 ## Troubleshooting
 
